@@ -300,11 +300,8 @@ function archiveBudgets(){
 }
 
 function importBudgetConfirm(){
-  let importConfirm = confirm("You are requesting to import a previous budget. To do so, your current budget envelopes (if you have any) will be saved and downloaded automatically. Would you like to continue? (If you click \"OK\", you will be prompted to choose and upload your budget).");
+  let importConfirm = confirm("Before you import a previous budget, be sure you have saved and archived your previous budget. Are you sure you would like to continue?");
   if(importConfirm){
-    if(localStorage.getItem("budget_cards") && JSON.parse(localStorage.getItem("budget_cards")).length > 0){
-      archiveBudgets();
-    }
     document.querySelector(".uploader").click();
   }
 }
