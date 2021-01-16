@@ -636,11 +636,11 @@ function uploadBudget(){
 
 <app-container>
   <h1>Digital Budget Envelopes</h1>
-  <p class="get-info" onclick="document.querySelector('about').classList.add('active');"><span>?</span></p>
+  <p class="get-info" onclick="document.querySelector('about').classList.add('active'); document.querySelector('body').classList.add('active');"><span>?</span></p>
   <div class="button-controls">
     <button onclick="addBudget()">Add Envelope</button>
-    <button onclick="archiveBudgets()">Restet/Archive Budgets</button>
-    <button onclick="">Import Previous Budget</button>
+    <button onclick="archiveBudgetsConfirm()">Restet/Archive Budgets</button>
+    <button onclick="importBudgetConfirm()">Import Previous Budget</button>
   </div>
   <div class="budget-totals">
     <div class="total-budget">
@@ -679,7 +679,8 @@ function uploadBudget(){
     <p>Are you still reading this!? Are you one of those people that, like, reads all the terms and conditions because you feel dishonest if you don't? Boy, I don't envy that life. Maybe consider getting some counseling, but first: get using this app!</p>
   </about>
   
-  <a class="downloader" download="text.budgets" >Something</a>
+  <a class="downloader" download="budget.budgets" >Something</a>
+  <input class="uploader" onchange="uploadBudget()" type="file">
 </app-container>
 
 
