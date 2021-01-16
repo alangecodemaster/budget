@@ -292,8 +292,7 @@ function archiveBudgets(){
   let budgetCards = localStorage.getItem("budget_cards");
   let budgetItems = localStorage.getItem("budget_items");
   let concatenated = JSON.stringify([budgetCards,budgetItems]);
-  // let downloadFile = "data:text/plain;charset=utf-8," + encodeURIComponent(concatenated);
-  let downloadFile = "data:text/plain;charset=utf-8," + concatenated;
+  let downloadFile = "data:text/plain;charset=utf-8," + encodeURIComponent(concatenated);
   document.querySelector(".downloader").setAttribute("href", downloadFile);
   document.querySelector(".downloader").click();
   localStorage.clear();
