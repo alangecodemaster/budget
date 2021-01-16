@@ -1,0 +1,88 @@
+:root{
+--1-color: skyblue;
+--2-color: #ff6c6c;
+--3-color: lime;
+--4-color: darkgray;
+--neutral-dark: #222;
+font-family: Optima;
+}
+*{user-select: none;}
+html, body{background: var(--neutral-dark); margin: 0; padding: 0; color: white;}
+body *{box-sizing: border-box;}
+input{text-overflow: ellipsis;}
+app-container{width: 1000px; margin: 0 auto; max-width: 100%; display: block; min-height: 50px; position: relative; padding: 5px 5px 5em;}
+h1{color: white; text-align: center; text-transform: uppercase; font-weight: 100; letter-spacing: 1px;}
+
+
+.get-info{text-align: center; margin-top: 0; cursor: pointer;}
+.get-info span{border: 1px solid white; width: 20px; height: 20px; display: flex; margin: 0 auto; justify-content: center; align-items: center; border-radius: 50px;}
+
+
+.button-controls{display: flex; justify-content: space-between;;}
+.button-controls button{width: 30%; border: 1px dotted #666; font-family: Optima; color: white; padding: 20px 10px; font-size: 1.25em; cursor: pointer; background: rgba(255,255,255,.05); font-weight: bold; border-radius:7px;}
+
+
+.budget-totals{display: flex; justify-content: space-between; margin-top: 35px;}
+.budget-totals > div{width: 30%; text-align: center;}
+.budget-totals > div .number-amounts{display: block; margin-top: 15px; font-size: 2.5em; max-width: 300px; text-overflow: ellipsis; overflow: hidden;}
+.budget-totals > div:nth-child(1) .number-amounts{color: var(--3-color);}
+.budget-totals > div:nth-child(2) .number-amounts{color: var(--2-color);}
+.budget-totals > div:nth-child(3) .number-amounts{color: white;}
+
+
+.budget-cards{display: flex; margin-top: 4em; justify-content: center; flex-wrap: wrap;}
+
+
+.indiv-budget-card{width: 31%; box-shadow: 0 0 10px rgba(0,0,0,.8); overflow: scroll; margin: .5em 10px; padding-bottom: 15px; border-radius: 7px;}
+.indiv-budget-card .budget-name{background-image: linear-gradient(45deg,#87ebb4, #2b5d44, #101f03); text-align: center; padding: 10px 5px; color: white; font-size: 20px; font-weight: 600; width: 100%; border: 0; font-family: Optima;}
+.indiv-budget-card .start-title{padding: 0 5px;}
+.indiv-budget-card .budget-start{font-size: 30px; padding: 0 5px 25px; font-family: Courier;}
+.indiv-budget-card .budget-start input{background: none; border: none; color: white; font-size: 30px; display: inline; width: 100px; ont-family: Courier;}
+.indiv-budget-card .budget-items{list-style: none; padding: 0 5px 10px;}
+.indiv-budget-card h3{ padding-bottom: 5px; border-bottom: 1px dashed white; }
+.indiv-budget-card li{ font-family: Courier; font-weight: 100; font-size: 13px; display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
+.indiv-budget-card li .item-name{ padding-right: 15px; max-width: 200px; font-family: Courier; background: none; color: white; border: 0; }
+.indiv-budget-card li .item-amount{ font-size: 20px; max-width: 35%; }
+.indiv-budget-card li .item-amount input{ background: none; color: white; border: none; width: 50px; font-family: Courier; font-size: 20px; -moz-appearance: textfield; }
+.indiv-budget-card .budget-start input{-moz-appearance: textfield;}
+.indiv-budget-card li .item-amount input::-webkit-outer-spin-button, 
+.indiv-budget-card li .item-amount input::-webkit-inner-spin-button,
+.indiv-budget-card .budget-start input::-webkit-outer-spin-button,
+.indiv-budget-card .budget-start input::-webkit-inner-spin-button{ -webkit-appearance: none; margin: 0; }
+.indiv-budget-card li delete{ position: relative; cursor: pointer; }
+.indiv-budget-card li delete span{ position: absolute; display: none; }
+.indiv-budget-card li delete span.active{ display: block; right: 0; background: #111; opacity: .9; font-size: 12px; bottom: 100%; width: 150px; padding: 5px 7px 7px; text-align: center; text-decoration: underline; cursor: pointer; }
+.indiv-budget-card button{ margin: 0 5px; font-family: courier; text-transform: uppercase; }
+.indiv-budget-card .budget-end-wrapper{ display: flex; border-top: 1px dashed white; justify-content: space-between; padding: 5px; align-items: center; }
+.indiv-budget-card .budget-end{font-family: Courier; font-size: 30px; max-width: 50%; text-overflow: ellipsis;}
+.indiv-budget-card .trash-budget{margin-top: 1em; padding: 0 5px; cursor: pointer;}
+
+about{position: absolute; top:50%; left: 50%; width: 100%; display: block; height: 100%; overflow-y: scroll; background: rgba(2,2,2,.8); backdrop-filter: blur(5px); padding:5%; transform: translate(-50%, -50%) scale(0); transition: transform .25s;}
+about.active{transform: translate(-50%, -50%) scale(1);}
+about .x-out{ display: flex; width: 25px; height: 25px; border: 2px solid white; justify-content: center; align-items: center; border-radius: 50px; color: red; font-weight: bold; position: absolute; top: 15px; right: 20px; cursor: pointer; }
+about p, about ul li{ line-height: 1.5em; font-size: 1.05em; }
+about h2{margin-top: 2em;}
+
+.downloader, .uploader{display: none;}
+
+@media(max-width: 1000px){
+  .indiv-budget-card{width: 45%;}
+}
+
+@media(max-width: 650px){
+  .indiv-budget-card{width: 75%;}
+}
+
+@media(max-width: 600px){
+  .button-controls{flex-wrap: wrap;}
+  .button-controls button{width: 100%; padding: 10px; margin-bottom: .5em;}
+  .budget-totals > div > span:first-child{height: 40px; display: inline-block;}
+}
+
+@media(max-width: 500px){
+.indiv-budget-card{width: 98%;}
+}
+
+@media(max-width: 450px){
+  .budget-totals > div .number-amounts{font-size: 1.5em;}
+}
