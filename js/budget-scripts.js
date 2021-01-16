@@ -297,6 +297,10 @@ function archiveBudgets(){
   document.querySelector(".downloader").click();
   localStorage.clear();
   document.querySelector(".budget-cards").innerHTML = "";
+  localStorage.setItem("budget_cards", JSON.stringify([]));
+  localStorage.setItem("budget_items", JSON.stringify([]));
+  localStorage.setItem("id", "0");
+  localStorage.setItem("listitem_id", "0");
 }
 
 function importBudgetConfirm(){
