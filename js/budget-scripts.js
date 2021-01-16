@@ -297,10 +297,6 @@ function archiveBudgets(){
   document.querySelector(".downloader").click();
   localStorage.clear();
   document.querySelector(".budget-cards").innerHTML = "";
-  localStorage.setItem("budget_cards", JSON.stringify([]));
-  localStorage.setItem("budget_items", JSON.stringify([]));
-  localStorage.setItem("id", "0");
-  localStorage.setItem("listitem_id", "0");
 }
 
 function importBudgetConfirm(){
@@ -330,9 +326,9 @@ function uploadBudget(){
     let budgetCards = JSON.parse(results[0]);
     localStorage.setItem("budget_cards", JSON.stringify(budgetCards));
     let budgetItems = JSON.parse(results[1]);
-    if(budgetItems){
-      localStorage.setItem("budget_items", JSON.stringify(budgetItems));
-      localStorage.setItem("listitem_id", ((budgetItems[budgetItems.length - 1].uniqueId) + 1).toString());
+    localStorage.setItem("budget_items", JSON.stringify(budgetItems));
+    if(budgetItems.length > 0){
+        localStorage.setItem("listitem_id", ((budgetItems[budgetItems.length - 1].uniqueId) + 1).toString());
     }
     localStorage.setItem("id", ((budgetCards[budgetCards.length - 1].cardId) + 1).toString());
     window.location.reload();
