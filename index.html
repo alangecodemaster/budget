@@ -615,8 +615,8 @@ function uploadBudget(){
   reader.onload = function() {
     let results = JSON.parse(reader.result).toString();
     console.log(results);
-    let newStrings = results.replace(/\{\"/g, "");
-    console.log(newStrings);
+    //let newStrings = results.replace(/\{\"/g, "");
+    //console.log(newStrings);
     // localStorage.setItem("budget_cards", JSON.stringify(results[0]));
     // localStorage.setItem("budget_items", JSON.stringify(results[1]));
     // localStorage.setItem("listitem_id", "0");
