@@ -321,14 +321,16 @@ function uploadBudget(){
     let results = JSON.parse(reader.result);
     console.log(results);
     let budgetCards = JSON.parse(results[0]);
-    localStorage.setItem("budget_cards", JSON.stringify(budgetCards));
+    if(budgetCards.length > 0){
+      localStorage.setItem("budget_cards", JSON.stringify(budgetCards));
+      localStorage.setItem("id", ((budgetCards[budgetCards.length - 1].cardId) + 1).toString());
+    window.location.reload();
+    }
     let budgetItems = JSON.parse(results[1]);
     localStorage.setItem("budget_items", JSON.stringify(budgetItems));
     if(budgetItems.length > 0){
         localStorage.setItem("listitem_id", ((budgetItems[budgetItems.length - 1].uniqueId) + 1).toString());
     }
-    localStorage.setItem("id", ((budgetCards[budgetCards.length - 1].cardId) + 1).toString());
-    window.location.reload();
   };
 
   reader.onerror = function() {
