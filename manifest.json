@@ -3,14 +3,14 @@
   "name": "Digital Envelopes for Better Finances",
   "icons": [
     {
-      "src": "/images/orange_192.png",
+      "src": "/budget/small-icon.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/images/orange_512.png",
+      "src": "/images/big-icon.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "520x520"
     }
   ],
   "start_url": "/budget/index.html",
