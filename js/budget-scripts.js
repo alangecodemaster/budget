@@ -313,7 +313,9 @@ function archiveBudgets(){
   document.querySelector(".downloader").click();
   localStorage.clear();
   document.querySelector(".budget-cards").innerHTML = "";
-  overallBudgetMath();
+  document.querySelectorAll("#total-start, #total-spent, #total-remaining").forEach((item)=>{
+    item.innerHTML = "$0";
+  });
 }
 
 function importBudgetConfirm(){
