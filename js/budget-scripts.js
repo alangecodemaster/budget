@@ -97,6 +97,9 @@ function addBudgetItem(parentCard){
   if(!localStorage.getItem("listitem_id")){
     localStorage.setItem("listitem_id", "0");
   }
+  if(!localStorage.getItem("budget_items")){
+    localStorage.setItem("budget_items", JSON.stringify([]));
+  }
   let budget = document.querySelector(`.indiv-budget-card[data-card="${parentCard}"]`);
   let newItem = `<li data-listid="${localStorage.getItem('listitem_id')}">
 		          <input type="text" class="item-name" onblur="changeItemName(this, ${parentCard})" value="Item Name">
@@ -236,22 +239,28 @@ function trashBudget(cardId){
 
 // does the math for a single budget card
 function singleBudgetMath(cardId){
-  let startCardValue,
+  let startCardValue = 0,
       totalItemValues = 0,
       remainingBalance = 0,
       cards = JSON.parse(localStorage.getItem("budget_cards")),
       itemsPerCard = JSON.parse(localStorage.getItem("budget_items"));
 
-  cards.forEach(card=>{
-    if(card.cardId == cardId){
-      startCardValue = Number(card.budgetStart);
-    }
-  });
-  itemsPerCard.forEach(item=>{
-    if(item.cardId == cardId){
-      totalItemValues += Number(item.expense);
-    }
-  });
+  if(cards != null){
+    cards.forEach(card=>{
+      if(card.cardId == cardId){
+        startCardValue = Number(card.budgetStart);
+      }
+    });
+  }
+
+  if(itemsPerCard != null){
+    itemsPerCard.forEach(item=>{
+      if(item.cardId == cardId){
+        totalItemValues += Number(item.expense);
+      }
+    });
+  }
+
   remainingBalance = startCardValue - totalItemValues;
   cards.forEach(card=>{
     if(card.cardId == cardId){
@@ -266,19 +275,26 @@ function singleBudgetMath(cardId){
 
 // does the math for all the budgets
 function overallBudgetMath(){
-  let budgetCards = JSON.parse(localStorage.getItem("budget_cards"));
-  let startingBudget = 0;
-  let allExpenses = 0;
-  let budgetItems = JSON.parse(localStorage.getItem("budget_items"));
-  budgetCards.forEach( budget =>{
-    startingBudget += Number(budget.budgetStart);
-  });
-  budgetItems.forEach(item=>{
-    allExpenses += Number(item.expense);
-  });
-  document.querySelector("#total-start").innerHTML = "$" + startingBudget;
-  document.querySelector("#total-spent").innerHTML = "$" + allExpenses;
-  document.querySelector("#total-remaining").innerHTML = "$" + (startingBudget-allExpenses);
+  if(localStorage.getItem("budget_cards")){
+
+    let startingBudget = 0;
+    let budgetCards = JSON.parse(localStorage.getItem("budget_cards"));
+    budgetCards.forEach( budget =>{
+      startingBudget += Number(budget.budgetStart);
+    });
+
+    let allExpenses = 0;
+    if(localStorage.getItem("budget_items")){
+      let budgetItems = JSON.parse(localStorage.getItem("budget_items"));
+      budgetItems.forEach(item=>{
+        allExpenses += Number(item.expense);
+      });
+    }
+
+    document.querySelector("#total-start").innerHTML = "$" + startingBudget;
+    document.querySelector("#total-spent").innerHTML = "$" + allExpenses;
+    document.querySelector("#total-remaining").innerHTML = "$" + (startingBudget-allExpenses);
+  }
 }
 
 function archiveBudgetsConfirm(){
@@ -324,12 +340,12 @@ function uploadBudget(){
     if(budgetCards.length > 0){
       localStorage.setItem("budget_cards", JSON.stringify(budgetCards));
       localStorage.setItem("id", ((budgetCards[budgetCards.length - 1].cardId) + 1).toString());
-    window.location.reload();
+      window.location.reload();
     }
     let budgetItems = JSON.parse(results[1]);
     localStorage.setItem("budget_items", JSON.stringify(budgetItems));
     if(budgetItems.length > 0){
-        localStorage.setItem("listitem_id", ((budgetItems[budgetItems.length - 1].uniqueId) + 1).toString());
+      localStorage.setItem("listitem_id", ((budgetItems[budgetItems.length - 1].uniqueId) + 1).toString());
     }
   };
 
