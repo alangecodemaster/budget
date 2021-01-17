@@ -1,0 +1,20 @@
+{
+  "short_name": "Better Budgets",
+  "name": "Digital Envelopes for Better Finances",
+  "icons": [
+    {
+      "src": "/images/orange_192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/orange_512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/budget/index.html",
+  "background_color": "#333333",
+  "display": "standalone",
+  "theme_color": "lime"
+}
