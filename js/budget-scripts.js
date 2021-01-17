@@ -364,7 +364,7 @@ function uploadBudget(){
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function() {
     navigator.serviceWorker
-      .register("/budget/serviceWorker.js")
+      .register("https://alangecodemaster.github.io/budget/service-worker.js")
       .then(res => console.log("service worker registered"))
       .catch(err => console.log("service worker not registered", err))
   })
